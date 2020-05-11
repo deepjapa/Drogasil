@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "c6096d12-0245-4204-8ac9-d4f14f8d680d",
+		"name": "Drogasil",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/drogasil/exibearray",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[1,2,5,8,9]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/drogasil/exibearray",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"drogasil",
+						"exibearray"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/drogasil/calculasalario",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nome\" : \"Thiago\" ,\n\t\"salario\" : \"1000.00\",\n\t\"reajuste\" : \"50\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/drogasil/calculasalario",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"drogasil",
+						"calculasalario"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
