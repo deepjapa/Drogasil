@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.drogasil.domain.Funcionario;
+import br.com.drogasil.exception.BusinessException;
 import br.com.drogasil.service.DrogasilService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -35,6 +36,10 @@ public class DrogasilController {
 	@GetMapping("/exibearray")
 	@ResponseStatus(HttpStatus.OK)
 	public List<String> exibirArray(@RequestBody int[] arrayNumbers) {
+		
+		if (arrayNumbers == null || arrayNumbers.length <= 0) {
+			throw new BusinessException("Informar valores no Array!");		
+		}
 				
 		return drogasilService.exibe(arrayNumbers);
 	}
@@ -48,12 +53,11 @@ public class DrogasilController {
 			resposta.put("O seu Salário não sofreu Reajuste:", funcionario);
 			return new ResponseEntity<>(resposta, HttpStatus.OK);		
 		} else {
-			Funcionario func = drogasilService.calculaNovoSalario(funcionario);
+			drogasilService.calculaNovoSalario(funcionario);
 			Map<String, Object> resposta = new HashMap<>();
-			resposta.put("O seu Salário sofreu Reajuste:", func);
+			resposta.put("O seu Salário sofreu Reajuste:", funcionario);
 			return new ResponseEntity<>(resposta, HttpStatus.OK);		
 		}									
 	}
 	
-
 }

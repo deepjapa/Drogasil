@@ -14,15 +14,11 @@ public class DrogasilService {
 		
 		List<String> listResult = new ArrayList<String>();
 		
-		int j = 0;
+		int j = arrayNumbers[0] - 1;
 
 		for(int i=0; i < arrayNumbers.length; i++) {
 
-			if (i == 0) {
-				j = arrayNumbers[i];
-			} else {
-				j++;
-			}
+			j++;
 			
 			if (j == arrayNumbers[i]) {
 				listResult.add("Array na posição ["+i+"] = " + arrayNumbers[i]);
@@ -35,24 +31,18 @@ public class DrogasilService {
 		return listResult;
 	}
 	
-	public Funcionario calculaNovoSalario(Funcionario funcionario) {
+	public void calculaNovoSalario(Funcionario funcionario) {
 		
 		if (funcionario.getReajuste() > 0) {
 			
 			Double salarioNovo = funcionario.getSalario() + (funcionario.getSalario() * (funcionario.getReajuste() / 100));        	
         	if (salarioNovo % 2 == 0) {
         		salarioNovo = salarioNovo + 1;
-        		funcionario.setNovoSalario(salarioNovo);
-        	} else {
-        		funcionario.setNovoSalario(salarioNovo);
         	}
         		
-        	return funcionario;
-        	
-		} else {
-			funcionario.setNovoSalario(funcionario.getSalario());
-			return funcionario;
-		}
+        	funcionario.setNovoSalario(salarioNovo);
+        		
+		} 
 	}
 	
 }
